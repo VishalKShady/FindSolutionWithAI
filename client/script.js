@@ -45,19 +45,21 @@ function generateUniqueId() {
 }
 
 function chatStripe(isAi, value, uniqueId) {
-  return `
-        <div class="wrapper ${isAi && "ai"}">
+    return (
+        `
+        <div class="wrapper ${isAi && 'ai'}">
             <div class="chat">
                 <div class="profile">
                     <img 
                       src=${isAi ? bot : user} 
-                      alt="${isAi ? "bot" : "user"}" 
+                      alt="${isAi ? 'bot' : 'user'}" 
                     />
                 </div>
                 <div class="message" id=${uniqueId}>${value}</div>
             </div>
         </div>
-    `;
+    `
+    )
 }
 
 const handleSubmit = async (e) => {
@@ -84,7 +86,7 @@ const handleSubmit = async (e) => {
   // messageDiv.innerHTML = "..."
   loader(messageDiv);
 
-  const response = await fetch("https://aisolution.onrender.com/", {
+  const response = await fetch("https://aisolution.onrender.com", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
